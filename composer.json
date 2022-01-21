@@ -1,0 +1,37 @@
+{
+    "name": "farzai/phone-verification",
+    "type": "library",
+    "license": "MIT",
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4|^8.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle": "^7.0",
+        "phpunit/phpunit": "^9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Farzai\\PhoneVerification\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Farzai\\Tests\\":  "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "PA",
+            "email": "magician_canobi@hotmail.com"
+        }
+    ],
+    "scripts": {
+        "test": "phpunit"
+    }
+}
