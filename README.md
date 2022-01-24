@@ -71,6 +71,7 @@ composer require farzai/phone-verification
 ```
 
 ### เริ่มต้นการตั้งค่า
+
 เนื่องจากการใช้งานจะมีการเก็บข้อมูล และเรียกข้อมูลที่ท่านถือไว้จากฐานข้อมูล
 
 ดังนั้น ท่านจึงจำเป็นต้องบอกเราหน่อยว่าท่านเก็บข้อมูลอย่างไร และเรียกอย่างไร โดยการสร้าง Repository และ `implements` Interface เช่นตัวอย่างด้านล่าง
@@ -135,7 +136,7 @@ class MyRepository implements VerificationRepository
      */
     public function markAsExpired(Verification $verifier): Verification
     {
-        //
+        // ทำให้ record นั้น "หมดอายุ"
 
         return $verifier;
     }
@@ -147,7 +148,7 @@ class MyRepository implements VerificationRepository
      */
     public function markAsVerified(Verification $verifier): Verification
     {
-        //
+        // ทำให้ record นั้น "ยืนยันแล้ว"
 
         return $verifier;
     }
@@ -173,7 +174,10 @@ $repository = new MyRepository();
 
 // ตัวส่ง SMS
 // ในตัวอย่างนี้ เราเลือกใช้ Nexmo เป็นตัวอย่างก่อน
-$sms = new NexmoProvider();
+$sms = new NexmoProvider([
+    'key'   => 'xxxxxxxx',
+    'from'  => 'xxxxxxxx',
+]);
 
 // สร้าง Adapter
 $adapter = new SmsAdapter($sms, $repository);
@@ -211,7 +215,11 @@ $code = "xxxxxx";
 $repository = new MyRepository();
 
 // สร้างตัวดำเนินการ
-$sms = new NexmoProvider();
+$sms = new NexmoProvider([
+    'key'   => 'xxxxxxxx',
+    'from'  => 'xxxxxxxx',
+]);
+
 $adapter = new SmsAdapter($sms, $repository);
 $verifier = new Verifier($adapter);
 
@@ -232,3 +240,9 @@ try {
 }
 ```
 
+## ตัวอย่าง
+เราได้แนบไฟล์ตัวอย่างไว้ที่นี่เพื่อเป็นตัวอย่างประกอบ [ไฟล์ตัวอย่าง](example/README.md)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

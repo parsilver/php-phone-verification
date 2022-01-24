@@ -23,7 +23,7 @@ class Verifier
 
     /**
      * @param string $phoneNumber
-     * @return void
+     * @return Verification
      */
     public function create(string $phoneNumber): Verification
     {
